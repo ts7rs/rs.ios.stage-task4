@@ -5,12 +5,17 @@ final class FillWithColor {
     func fillWithColor(_ image: [[Int]], _ row: Int, _ column: Int, _ newColor: Int) -> [[Int]] {
         _ = image[row][column]
         
+      if image.first == nil { return image }
+        
       let color: Int = image[row][column]
       
       if color == newColor { return image }
       
       let rowCount: Int = image.count
       let colCount: Int = image[0].count
+        
+      if (row < 0 || row >= rowCount || column < 0 || column >= colCount) { return image }
+        
       var newImage: [[Int]] = image
       var queue: [(Int, Int)] = []
       queue.append((row, column))
